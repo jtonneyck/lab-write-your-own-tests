@@ -41,4 +41,4 @@ The greatest product will be the 20x20x20x4 = 32000; For an empty array the func
 ### Bonus
 
 7. Write tests for a function that returns the biggest product for the top right 4 diagonally adjacent numbers. Write the code that passes it.
-8. Write tests for a function that retuns the biggest product for all the 4 diagonally adjacent numbers. Write the code that passes it.
+8. Write tests for a function that returns the biggest product for all the 4 diagonally adjacent numbers. Write the code that passes it.
