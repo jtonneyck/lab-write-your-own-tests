@@ -27,12 +27,46 @@ describe("biggest product", function() {
     expect(biggestProduct([])).toEqual(0);
   });
 
-  //write a unit test for the other edge case
+  it("returns undefined if the input is not an array", function() {
+    expect(biggestProduct()).toEqual(undefined);
+    expect(biggestProduct(12312)).toEqual(undefined);
+    expect(biggestProduct("SDFXXZC")).toEqual(undefined);
+    expect(biggestProduct({la: "WHOO"})).toEqual(undefined);
+  }) 
 });
 
 describe("product of 4 numbers", function() {
-  //write unit tests here
-
+  it("return the product", function(){
+    expect(productOf4(1,2,3,4)).toEqual(24);
+  })
 });
 
+describe("biggestInRow", function() {
+  it("should return the biggest product in row", function() {
+    expect(biggestInRow([1,1,1,1])).toEqual(1);
+    expect(biggestInRow([5,1,1,1,1])).toEqual(5);
+    expect(biggestInRow([1,1,1,1,9])).toEqual(9);
+    expect(biggestInRow([1,2,2,2,8,9])).toEqual(288);
+  })
+});
+
+describe("biggestInAllRows", function() {
+  var x = [
+    [1,1,1,1,1,1],
+    [5,1,1,1,1,1],
+    [1,1,1,1,1,9],
+    [1,2,2,2,8,9]
+  ]
+  var y = [
+    [99,01,99,01,01,01],
+    [05,01,01,01,01,01],
+    [01,01,01,01,01,09],
+    [01,02,02,02,08,09]
+  ]
+
+  it("should return the biggest product in all rows", function() {
+    expect(biggestInAllRows(x)).toEqual(288);
+    expect(biggestInAllRows(y)).toEqual(9801);
+  });
+})
 // write other tests here
