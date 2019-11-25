@@ -28,9 +28,12 @@ The greatest product will be the 20x20x20x4 = 32000; For an empty array the func
 
  Write your source code in `BiggestProduct.js` and your test code in `biggestProductSpec.js`. The overal approach is that we can divide the exercise in incremental steps. To calculate the biggest product of 4 adjacent numbers in a 2 dimensional array, we first have to be albe to calculate the product of any 4 numbers. After we want to find the biggest horizontal product, then the biggest vertical one and finally the biggest one diagonally.
 
+### Iteration 1
 1.  Write tests for the edge cases. For an empty array the function should return 0. Write the code that passes it.
 2.  Write tests for a helper function that returns the product of 4 numbers that are passed to it. Write the code that passes it.
 3. Write tests for a function that returns the biggest product for 1 row. Write the code that passes it.
+
+### Iteration 2
 4. Write tests for a function that returns the biggest product for all the rows. Write the code that passes it.
 5. Write tests for a function that returns the biggest product for 1 column. Write the code that passes it.
 6. Write tests for a function that retuns the biggest product for all the columns. Write the code that passes it.
