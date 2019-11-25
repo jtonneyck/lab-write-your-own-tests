@@ -2,6 +2,17 @@
 
 Until now we've been using other peoples tests. TDD is about you approaching a problem in little incremental steps. You define those little steps one by one with a test and than you verify it by running it. We our going to write our first tests for the bonus exercise of <a href="https://github.com/ironhack-labs/lab-javascript-functions-and-arrays"> 'javascript functions and arrays' lab </a>. This is a good candidate to practics TDD, because we can divide it up in smaller bits. 
 
+## Submission
+Upon completion, run the following commands
+```
+$ git add .
+$ git commit -m "done"
+$ git push origin master
+```
+Navigate to your repo and create a Pull Request -from your master branch to the original repository master branch.
+
+In the Pull request name, add your name and last names separated by a dash "-"
+
 ## The Exercise
 What is the greatest product of four adjacent numbers? We consider adjacent any 4 numbers that are next to each other in horizontal, vertical or diagonal.
 
