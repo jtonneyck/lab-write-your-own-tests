@@ -30,7 +30,7 @@ describe("biggest product", function() {
   //write a unit test for the other edge case
 });
 
-describe("helper function product of 4 numbers", function() {
+describe("product of 4 numbers", function() {
   //write unit tests here
 
 });
