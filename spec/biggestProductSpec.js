@@ -21,17 +21,95 @@ const matrix = [
   [01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48]
 ];
 
-describe("biggest product", function() {
+describe("biggestProduct()", function() {
 
-  it("return 0 on empty input", function() {
-    expect(biggestProduct([])).toEqual(0);
+  it("returns undefined on input that is not an array", function() {
+    expect(biggestProduct({})||biggestProduct('abc')||biggestProduct(3)||biggestProduct(null)||biggestProduct(undefined)).toBeUndefined();
   });
 
   //write a unit test for the other edge case
+  it("returns undefined when the number of elements of the input array is smaller than 4", function() {
+    expect(biggestProduct([1,2,3])).toBeUndefined();
+  });
+
+  it("returns undefined when any of the rows is not an array",function(){
+    expect(biggestProduct([[1,2,3,4],[4,5,6,7],[5,6,7,8],{'a':1,'b':2}])).toBeUndefined();
+  });
+
+  it("returns undefined when any of the rows does not contain a number",function(){
+    x=matrix[4][5];matrix[4][5]='';
+    expect(biggestProduct(matrix)).toBeUndefined();
+    matrix[4][5]=x;
+  });
+
+  it("returns undefined when all the rows are not of equal length",function(){
+    matrix[4].push(21);
+    expect(biggestProduct(matrix)).toBeUndefined();
+    matrix[4].pop();
+  });
+
+  it("returns undefined when the number of columns is smaller than 4",function(){
+    expect(biggestProduct([[1,2,3],[4,5,6],[7,8,9],[10,11,12]])).toBeUndefined();
+  });
+
+  // let force the largest product horizontally in the last row and check it
+  it("returns 10000000 when the last row contains four values equal to 100 at the end",function(){
+    let lastrow=matrix[19];
+    matrix[19][19]=100;matrix[19][18]=100;matrix[19][17]=100;matrix[19][16]=100;
+    expect(biggestProduct(matrix)).toEqual(100000000);
+    matrix[19]=lastrow;
+  });
+
+  it("returns 10000000 when the last column contains four values equal to 100 at the end",function(){
+    matrix[19][19]=100;matrix[18][19]=100;matrix[17][19]=100;matrix[16][19]=100;
+    expect(biggestProduct(matrix)).toEqual(100000000);
+    matrix[19][19]=48;matrix[18][19]=54;matrix[17][19]=16;matrix[16][19]=36;
+  });
+  
+  it("returns 10000000 when the last diagonal four number product contains four values equal to 100 at the end",function(){
+    matrix[19][19]=100;matrix[18][18]=100;matrix[17][17]=100;matrix[16][16]=100;
+    expect(biggestProduct(matrix)).toEqual(100000000);
+    matrix[19][19]=48;matrix[18][18]=5;matrix[17][17]=4;matrix[16][16]=40;
+  });
+
+  it("returns 51267216 when applied to matrix",function(){
+    expect(biggestProduct(matrix)).toEqual(51267216);
+  });
+
 });
 
 describe("product of 4 numbers", function() {
   //write unit tests here
+  // 1. the function should exist
+  it("should exist.",function(){
+    expect(typeof getProductOfFourNumbers).toEqual("function");
+  });
+
+  // 2. if any of the arguments is not a number should return undefined
+  it("returns undefined when any of the arguments is not a number",function(){
+    expect(getProductOfFourNumbers('',1,1,1)||getProductOfFourNumbers(1,'',1,1)||getProductOfFourNumbers(1,1,'',1)||getProductOfFourNumbers(1,1,1,'')).toEqual(undefined);
+  });
+
+  // 3. if any of the number is zero should return zero
+  it("returns 0 when any of the arguments is zero",function(){
+    expect(getProductOfFourNumbers(0,1,1,1)||getProductOfFourNumbers(1,0,1,1)||getProductOfFourNumbers(1,1,0,1)||getProductOfFourNumbers(1,1,1,0)).toEqual(0);
+  });
+  
+  // 4. if any of the arguments is not a number should return undefined
+  it("returns undefined when any of the arguments is not a number",function(){
+    expect(getProductOfFourNumbers('',1,1,1)||getProductOfFourNumbers(1,'',1,1)||getProductOfFourNumbers(1,1,'',1)||getProductOfFourNumbers(1,1,1,'')).toEqual(undefined);
+  });
+
+  // 5. works as well with negative numbers
+  it("returns 120 when applied to negative numbers -5, -4, -3, -2",function(){
+    expect(getProductOfFourNumbers(-5,-4,-3,-2)).toEqual(120);
+  });
+
+  // 5. works independent of order
+  it("returns the same for any order",function(){
+    expect(getProductOfFourNumbers(-5,-4,-3,-2)).toEqual(getProductOfFourNumbers(2,3,4,5));
+  });
+
 
 });
 
