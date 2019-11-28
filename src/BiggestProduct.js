@@ -40,23 +40,9 @@ function getColumn(twoDimArray, index){
     return column;
 }
 
-function biggestInColumn(aColumn){
-    let biggest = 0;
-    for(let i = 0; i < aColumn.length - 3 ; i++) {
-        let current = productOf4(...aColumn.slice(i, i + 4));
-        if(current > biggest) biggest = current;
-    }
-    return biggest;
-}
-
 function biggestInAllColumns(twoDimArray) {
-    var biggest = 0;
-    twoDimArray[0].forEach((item, index)=> {
-        let column = getColumn(twoDimArray, index);
-        let current = biggestInColumn(column);
-        if( current > biggest) biggest = current;
-    })
-    return biggest;
+    twoDimArray = transpose(twoDimArray);
+    return biggestInAllRows(twoDimArray);
 }
 
 function getDiagonal(matrix, diagonalIndex){

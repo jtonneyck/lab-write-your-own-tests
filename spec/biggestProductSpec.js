@@ -67,6 +67,7 @@ describe("biggest product", function() {
     expect(biggestProduct("SDFXXZC")).toEqual(undefined);
     expect(biggestProduct({la: "WHOO"})).toEqual(undefined);
   }) 
+
   it("should return the biggest product", ()=> {
     expect(biggestProduct(w)).toEqual(96059601);
     expect(biggestProduct(x)).toEqual(288);
@@ -97,29 +98,6 @@ describe("biggestInAllRows", function() {
     expect(biggestInAllRows(y)).toEqual(9801);
   });
 })
-
-describe("getColumn", function() {
-  it("should be defined", ()=> {
-    expect(typeof getColumn).toEqual("function");
-  })
-
-  it('should return an array with the column items', () => {
-    expect(getColumn(y, 0)).toEqual([99,05,01,01]);
-    expect(getColumn(y, 1)).toEqual([01,01,01,02]);
-
-    expect(getColumn(x, 0)).toEqual([1,5,1,1]);
-    expect(getColumn(x, 1)).toEqual([1,1,1,2]);
-    expect(getColumn(x, 5)).toEqual([1,1,9,9]);
-  });
-  
-})
-
-describe('biggestInColumn', () => {
-  it('should return the biggest product in a column', () => {
-    expect(biggestInColumn(getColumn(x,0))).toEqual(5);
-    expect(biggestInColumn(getColumn(y,0))).toEqual(495);
-  });
-});
 
 describe('biggestInAllColumns', () => {
   it("should return the biggest product in all columns", ()=> {
