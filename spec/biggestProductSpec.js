@@ -20,10 +20,44 @@ const matrix = [
   [20, 73, 35, 29, 78, 31, 90, 01, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 05, 54],
   [01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48]
 ];
+var u = [
+  [01,01,01,100,99,01],
+  [05,01,01,100,01,01],
+  [01,01,99,100,01,09],
+  [01,99,02,100,08,09]
+];
 
+var w = [
+  [01,01,01,01,99,01],
+  [05,01,01,99,01,01],
+  [01,01,99,01,01,09],
+  [01,99,02,02,08,09]
+];
+
+var x = [
+  [1,1,1,1,1,1],
+  [5,1,1,1,1,1],
+  [1,1,1,1,1,9],
+  [1,2,2,2,8,9]
+];
+
+var y = [
+  [99,01,99,01,01,01],
+  [05,01,01,01,01,01],
+  [01,01,01,01,01,09],
+  [01,02,02,02,08,09]
+];
+
+var z = [
+  [99,01,99,01,01,01],
+  [05,01,01,01,01,01],
+  [01,01,01,01,01,09],
+  [01,02,02,02,08,09],
+  [01,02,02,02,08,09]
+];
 describe("biggest product", function() {
 
-  it("return 0 on empty input", function() {
+  it("returns 0 on empty input", function() {
     expect(biggestProduct([])).toEqual(0);
   });
 
@@ -33,10 +67,17 @@ describe("biggest product", function() {
     expect(biggestProduct("SDFXXZC")).toEqual(undefined);
     expect(biggestProduct({la: "WHOO"})).toEqual(undefined);
   }) 
+  it("should return the biggest product", ()=> {
+    expect(biggestProduct(w)).toEqual(96059601);
+    expect(biggestProduct(x)).toEqual(288);
+    expect(biggestProduct(y)).toEqual(9801);
+    expect(biggestProduct(z)).toEqual(9801);
+    expect(biggestProduct(u)).toEqual(100000000);
+  })
 });
 
 describe("product of 4 numbers", function() {
-  it("return the product", function(){
+  it("returns the product", function(){
     expect(productOf4(1,2,3,4)).toEqual(24);
   })
 });
@@ -51,22 +92,86 @@ describe("biggestInRow", function() {
 });
 
 describe("biggestInAllRows", function() {
-  var x = [
-    [1,1,1,1,1,1],
-    [5,1,1,1,1,1],
-    [1,1,1,1,1,9],
-    [1,2,2,2,8,9]
-  ]
-  var y = [
-    [99,01,99,01,01,01],
-    [05,01,01,01,01,01],
-    [01,01,01,01,01,09],
-    [01,02,02,02,08,09]
-  ]
-
   it("should return the biggest product in all rows", function() {
     expect(biggestInAllRows(x)).toEqual(288);
     expect(biggestInAllRows(y)).toEqual(9801);
   });
 })
-// write other tests here
+
+describe("getColumn", function() {
+  it("should be defined", ()=> {
+    expect(typeof getColumn).toEqual("function");
+  })
+
+  it('should return an array with the column items', () => {
+    expect(getColumn(y, 0)).toEqual([99,05,01,01]);
+    expect(getColumn(y, 1)).toEqual([01,01,01,02]);
+
+    expect(getColumn(x, 0)).toEqual([1,5,1,1]);
+    expect(getColumn(x, 1)).toEqual([1,1,1,2]);
+    expect(getColumn(x, 5)).toEqual([1,1,9,9]);
+  });
+  
+})
+
+describe('biggestInColumn', () => {
+  it('should return the biggest product in a column', () => {
+    expect(biggestInColumn(getColumn(x,0))).toEqual(5);
+    expect(biggestInColumn(getColumn(y,0))).toEqual(495);
+  });
+});
+
+describe('biggestInAllColumns', () => {
+  it("should return the biggest product in all columns", ()=> {
+    expect(biggestInAllColumns(y)).toEqual(495);
+    expect(biggestInAllColumns(x)).toEqual(81);
+  })
+})
+
+describe('getDiagonal', ()=> {
+  it('should be defined', () => {
+    expect(typeof getDiagonal).toEqual("function");
+  });
+  
+  it("should return an array with the diagonal items", ()=> {
+    expect(getDiagonal(x, 3)).toEqual([1,1,1,1]);
+    expect(getDiagonal(x, 4)).toEqual([1,1,1,2]);
+    expect(getDiagonal(y, 3)).toEqual([01,01,01,01]);
+    expect(getDiagonal(z, 3)).toEqual([01,01,01,01]);
+    expect(getDiagonal(z, 4)).toEqual([01,01,01,02,01]);
+    expect(getDiagonal(z, 5)).toEqual([01,01,01,02,02]);
+  })
+})
+
+describe("transpose", ()=> {
+  it('should be defined', () => {
+    expect(typeof transpose).toEqual("function")
+  });
+
+  var x2 = [
+    [1,5,1,1],
+    [1,1,1,2],
+    [1,1,1,2],
+    [1,1,1,2],
+    [1,1,1,8],
+    [1,1,9,9]
+  ]
+  it("should transpose a matrix", ()=> {
+    var transposedX = transpose(x)
+    expect(transposedX).toEqual(x2);
+    expect(transposedX.length).toEqual(x[0].length);
+    expect(transpose(transposedX)).toEqual(x);
+  })
+})
+
+describe('biggestInAllDiagonals', () => {
+  it('should be defined', () => {
+    expect(typeof biggestInAllDiagonals).toEqual("function")
+  });
+  it('should return the biggest diagonal', () => {
+    expect(biggestInAllDiagonals(x)).toEqual(2);
+    expect(biggestInAllDiagonals(y)).toEqual(2);
+    expect(biggestInAllDiagonals(z)).toEqual(4);
+  });
+  
+})
