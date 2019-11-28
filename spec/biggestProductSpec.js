@@ -1,24 +1,3 @@
-// describe("biggest product", function() {
-
-//     it("return 0 on empty input", function() {
-//         expect(biggestProduct([])).toEqual(0);
-//         I
-//     });
-
-//     it("return a number on not empty input", function() {
-//         expect(typeof biggestProduct(matrix)).toEqual("number");
-//     });
-// });
-
-// describe("product of 4 numbers", function() {
-//     it("returns the product of 4 numbers that are passed to the function", function() {
-
-//     });
-
-// });
-
-// write other tests here
-
 describe("biggestProduct", function() {
     it('should be defined', () => {
         expect(typeof biggestProduct).toEqual("function")
