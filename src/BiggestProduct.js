@@ -41,12 +41,16 @@ function biggestProduct(array) {
 console.log(biggestProduct(matrix))
 
 //2nd solution
-function biggestProduct(matrix) {
-    var biggestInColumns = biggestInAllColumns(matrix);
-    var biggestInRows = biggestInAllRows(matrix)
-    return biggestInColumns > biggestInRows ? biggestInColumns : biggestInRows
+function biggestProduct(array) {
+    if (array !== undefined) {
+        var biggestInColumns = biggestInAllColumns(matrix);
+        var biggestInRows = biggestInAllRows(matrix)
+        return biggestInColumns > biggestInRows ? biggestInColumns : biggestInRows
+    } else {
+        return 0
+    }
 }
-
+console.log(biggestProduct(matrix))
 function productOf4(w, x, y, z) {
     return w * x * y * z;
 }
