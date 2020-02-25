@@ -91,7 +91,7 @@ let testRow = [
 
 let resultRow = [34144, 2, 6561]
 
-describe('Return the biggest product of a row', () => {
+describe('Biggest product of a row', () => {
   it('should be defined', () => {
     expect(typeof biggestPrdOfRow).toEqual("function");
   });
@@ -117,7 +117,127 @@ describe('Return the biggest product of a row', () => {
     }
     
   });
+});
 
+testMatrix1 = [
+[ 1, 2, 3, 4, 5],
+[ 1, 20, 3, 4, 5],
+[ 1, 20, 3, 4, 5],
+[ 1, 20, 3, 4, 5],
+[ 1, 4, 3, 4, 5]
+];
+
+testMatrix2 = [
+  [1,1,1,1],
+  [1,1,1,1],
+  [1,1,1,2],
+  [1,2,-1,1],
+];
+
+
+describe('Biggest product of all the rows', () => {
+  
+  it('should be defined', () => {
+    expect(typeof bigPrdOfAllRows).toEqual("function");
+  });
+
+  it('should receive one argument', () => {
+    expect(bigPrdOfAllRows.length).toEqual(1);
+  });
+
+  it("return 0 on empty input", function() {
+    expect(bigPrdOfAllRows([])).toEqual(0);
+  });
+
+  it('should return undefined when argument is not an array', () => {
+    expect(bigPrdOfAllRows("a")).toEqual("undefined");
+    expect(bigPrdOfAllRows(1)).toEqual("undefined");
+    expect(bigPrdOfAllRows(true)).toEqual("undefined");
+  });
+
+  it('should return the biggest product of all rows', () => {
+    expect(bigPrdOfAllRows(testMatrix1)).toEqual(1200);
+    expect(bigPrdOfAllRows(testMatrix2)).toEqual(2);
+
+  });
+});
+
+testMatrix2Res0 = [1,1,1,1];
+testMatrix2Res1 = [1,1,1,2];
+testMatrix1Res1 = [2,20,20,20,4];
+
+describe('Transpose 1 column of the matrix to a row', () => {
+  
+  it('should be defined', () => {
+    expect(typeof transposeCol).toEqual("function");
+  });
+
+  it('should receive two argument', () => {
+    expect(transposeCol.length).toEqual(2);
+  });
+
+  it("return 0 on empty input", function() {
+    expect(transposeCol([])).toEqual(0);
+  });
+
+  it('should return undefined when argument is not an array', () => {
+    expect(transposeCol("a")).toEqual("undefined");
+    expect(transposeCol(1)).toEqual("undefined");
+    expect(transposeCol(true)).toEqual("undefined");
+  });
+
+  it('should return the values of the column as a row', () => {
+    expect(transposeCol(testMatrix2, 0)).toEqual(testMatrix2Res0);
+    expect(transposeCol(testMatrix2, 1)).toEqual(testMatrix2Res1);
+    expect(transposeCol(testMatrix1, 1)).toEqual(testMatrix1Res1);
+  });
 
 });
 
+let testMatrix3 = [
+  [1,2],
+  [3,4]
+];
+let transMatrix3 = [
+  [1,3],
+  [2,4]
+]
+
+describe('Make a transposed matrix', () => {
+  it('should be defined', () => {
+    expect(typeof transposedMatrix).toEqual("function");
+  });
+
+  it('should output a matrix with the transposed col', () => {
+    expect(transposedMatrix(testMatrix3)[0][0]).toEqual(transMatrix3[0][0]);
+    expect(transposedMatrix(testMatrix3)[0][1]).toEqual(transMatrix3[0][1]);
+
+  });
+});
+
+// describe('Biggest product of all the rows', () => {
+  
+//   it('should be defined', () => {
+//     expect(typeof bigPrdOfAllRows).toEqual("function");
+//   });
+
+//   it('should receive one argument', () => {
+//     expect(bigPrdOfAllRows.length).toEqual(1);
+//   });
+
+//   it("return 0 on empty input", function() {
+//     expect(bigPrdOfAllRows([])).toEqual(0);
+//   });
+
+//   it('should return undefined when argument is not an array', () => {
+//     expect(bigPrdOfAllRows("a")).toEqual("undefined");
+//     expect(bigPrdOfAllRows(1)).toEqual("undefined");
+//     expect(bigPrdOfAllRows(true)).toEqual("undefined");
+//   });
+
+//   it('should return the biggest product of all rows', () => {
+//     expect(bigPrdOfAllRows(testMatrix1)).toEqual(1200);
+//     expect(bigPrdOfAllRows(testMatrix2)).toEqual(2);
+
+//   });
+// });

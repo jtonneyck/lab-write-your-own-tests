@@ -1,12 +1,4 @@
-function biggestProduct(arr){
-    if (arr.length === 0){
-        return 0;
-    } else if (Array.isArray(arr)) {
-        
-    } else {
-        return "undefined";
-    }
-}
+
 
 function productOf4(arr){
     if (arr.length === 0) return 0;
@@ -37,3 +29,55 @@ function biggestPrdOfRow(row){
     }
 }
 
+function bigPrdOfAllRows(matrix){
+    if (matrix.length === 0) return 0;
+    if(Array.isArray(matrix)){
+        let bigPrdAllRows = 0;
+        for( i = 0; i<matrix.length; i++){
+            let rowProduct = biggestPrdOfRow(matrix[i]);
+            if ( rowProduct > bigPrdAllRows) bigPrdAllRows = rowProduct;
+        }
+        return bigPrdAllRows;
+    } else {
+        return "undefined";
+    }
+};
+
+function transposeCol(matrix, index){
+    if (matrix.length === 0) return 0;
+    if(Array.isArray(matrix)){
+        let transposedRow = [];
+        for(i=0; i<matrix.length; i++){
+            transposedRow.push(matrix[i][index]);
+        }
+        return transposedRow;
+    
+    } else {
+        return "undefined";
+    }
+}
+
+function transposedMatrix(matrix){
+    let transMatrix = [];
+    
+    for(let i = 0; i< matrix.length; i++){
+        transMatrix.push(transposeCol(matrix, i));
+    }
+    return transMatrix;
+}
+
+
+
+
+
+function biggestProduct(arr){
+    if (arr.length === 0){
+        return 0;
+    } else if (Array.isArray(arr)) {
+        
+
+        
+    } else {
+        return "undefined";
+    }
+}
