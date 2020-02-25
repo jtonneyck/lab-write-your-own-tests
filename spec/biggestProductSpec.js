@@ -22,17 +22,51 @@ const matrix = [
 ];
 
 describe("biggest product", function() {
-
   it("return 0 on empty input", function() {
     expect(biggestProduct([])).toEqual(0);
-  });
+  });   
+  it("return undefined if not an array", function(){
+    expect(biggestProduct("string")).toEqual(undefined);
+    expect(biggestProduct("number")).toEqual(undefined);
+  })
 
-  //write a unit test for the other edge case
 });
 
 describe("product of 4 numbers", function() {
-  //write unit tests here
-
+  it("returns the biggest product of 4 adjacent numbers", function(){
+    expect(aProductOf4(1,2,3,4)).toEqual(24);
+    expect(aProductOf4(1,1,3,4)).toEqual(12);
+    expect(aProductOf4(1,1,1,1)).toEqual(1);
+  })
 });
 
-// write other tests here
+describe("biggest product of a row", function() {
+  it("return the biggest product of 4 adjacent numbers in 1 row",function() {
+    expect(biggestProduct1Row([1,2,3,4,5])).toEqual(120);
+    expect(biggestProduct1Row([1,1,2,3,4])).toEqual(24);
+  })
+})
+
+describe("biggest product of all rows", function() {
+  it("return the biggest product of 4 adjacent numbers in all rows",function() {
+    expect(biggestProductAllRows([[1,2,3,4,5],[1,1,2,2,2]])).toEqual(120);
+    expect(biggestProductAllRows([[1,1,2,3,4],[1,1,2,2,2]])).toEqual(24);
+  })
+})
+
+
+
+
+// Iteration 1
+// Write tests for the edge cases. For an empty array the function should return 0. Write the code that passes it.
+// Write tests for a helper function that returns the product of 4 numbers that are passed to it. Write the code that passes it.
+// Write tests for a function that returns the biggest product for 1 row. Write the code that passes it.
+
+// Iteration 2
+// Write tests for a function that returns the biggest product for all the rows. Write the code that passes it.
+// Write tests for a function that returns the biggest product for 1 column. Write the code that passes it.
+// Write tests for a function that returns the biggest product for all the columns. Write the code that passes it.
+
+// Bonus
+// Write tests for a function that returns the biggest product for the top right 4 diagonally adjacent numbers. Write the code that passes it.
+// Write tests for a function that returns the biggest product for all the 4 diagonally adjacent numbers. Write the code that passes it.
