@@ -65,6 +65,7 @@ function biggestProductAllRows (smallMatrix){
 
 function columnToRow (smallMatrix, index){
     let column = [];
+    debugger
     for (let i = 0; i < smallMatrix.length; i++){
         column.push(smallMatrix[i][index]);
     }
