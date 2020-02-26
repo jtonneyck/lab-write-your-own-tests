@@ -70,14 +70,20 @@ function transposedMatrix(matrix){
 
 
 
-function biggestProduct(arr){
-    if (arr.length === 0){
+function biggestProduct(matrix){
+    if (matrix.length === 0){
         return 0;
-    } else if (Array.isArray(arr)) {
-        
-
-        
+    } else if (Array.isArray(matrix)) {
+        let biggestProductOfRows = bigPrdOfAllRows(matrix);
+        let trnsMatrix = transposedMatrix(matrix);
+        let biggestProductOfCol = bigPrdOfAllRows(trnsMatrix);
+        if (biggestProductOfRows >= biggestProductOfCol){
+            return biggestProductOfRows;
+        } else {
+            return biggestProductOfCol;
+        }
     } else {
         return "undefined";
     }
 }
+

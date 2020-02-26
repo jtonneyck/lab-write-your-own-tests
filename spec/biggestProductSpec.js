@@ -21,6 +21,7 @@ const matrix = [
   [01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48]
 ];
 
+
 describe("biggest product", function() {
 
   it('should be defined', () => {
@@ -42,6 +43,10 @@ describe("biggest product", function() {
     expect(biggestProduct(true)).toEqual("undefined");
   });
 
+  it('should return the biggest product of the matrix', () => {
+    expect(biggestProduct(testArr)).toEqual(18);
+    expect(biggestProduct(testMatrix1)).toEqual(32000);
+  });
   
 });
 
@@ -214,30 +219,3 @@ describe('Make a transposed matrix', () => {
 
   });
 });
-
-// describe('Biggest product of all the rows', () => {
-  
-//   it('should be defined', () => {
-//     expect(typeof bigPrdOfAllRows).toEqual("function");
-//   });
-
-//   it('should receive one argument', () => {
-//     expect(bigPrdOfAllRows.length).toEqual(1);
-//   });
-
-//   it("return 0 on empty input", function() {
-//     expect(bigPrdOfAllRows([])).toEqual(0);
-//   });
-
-//   it('should return undefined when argument is not an array', () => {
-//     expect(bigPrdOfAllRows("a")).toEqual("undefined");
-//     expect(bigPrdOfAllRows(1)).toEqual("undefined");
-//     expect(bigPrdOfAllRows(true)).toEqual("undefined");
-//   });
-
-//   it('should return the biggest product of all rows', () => {
-//     expect(bigPrdOfAllRows(testMatrix1)).toEqual(1200);
-//     expect(bigPrdOfAllRows(testMatrix2)).toEqual(2);
-
-//   });
-// });
