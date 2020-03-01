@@ -21,18 +21,38 @@ const matrix = [
   [01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48]
 ];
 
-describe("biggest product", function() {
+//describe("biggest product", function() {
 
-  it("return 0 on empty input", function() {
-    expect(biggestProduct([])).toEqual(0);
-  });
+ // it("return 0 on empty input", function() {
+//    expect(biggestProduct([])).toEqual(0);
+ //   expect(biggestProduct("string")).toEqual(undefined);
+ //   expect(biggestProduct(24)).toEqual(undefined);
+ // });
 
   //write a unit test for the other edge case
-});
+//});
 
 describe("product of 4 numbers", function() {
-  //write unit tests here
+  it('should the product of four numbers', () => {
+    expect(fourProduct(1,4,5,6)).toEqual(120);
+    expect(fourProduct(1,1,1,3)).toEqual(3);
+    expect(fourProduct(0,2,4,5)).toEqual(0);
+  });
 
+});
+
+describe("the largest product of all rows matrix", function() {
+  it('should return the largest product of rows', () => {
+    expect(biggestForAllRows([[1,2,3,4],[1,1,2,1],[1,5,4,5]])).toEqual(100);
+
+  });
+
+});
+
+describe("the largest product of all column matrix", function() {
+  it('should return the largest product of columns', () => {
+    expect(biggestForAllColumns([[1,2,3,4],[1,1,2,1],[1,5,4,5],[1,1,1,1]])).toEqual(24);
+  });
 });
 
 // write other tests here
