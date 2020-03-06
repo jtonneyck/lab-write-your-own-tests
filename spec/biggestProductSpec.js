@@ -28,10 +28,16 @@ describe("biggest product", function() {
   });
 
   //write a unit test for the other edge case
+  it('return undefined if argument is not an array', function(){
+    expect(biggestProduct('hello')).toEqual(undefined)
+    expect(biggestProduct(7)).toEqual(undefined)
+  })
+
 });
 
 describe("product of 4 numbers", function() {
   //write unit tests here
+  it('return the product of ')
 
 });
 
