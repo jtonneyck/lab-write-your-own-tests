@@ -21,18 +21,85 @@ const matrix = [
   [01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48]
 ];
 
-describe("biggest product", function() {
+const smallMatrix = [
+  [ 1,  2, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1,  4, 3, 4, 5]
+];
 
+// Iteration 1.1
+describe("biggest product", function() {
   it("return 0 on empty input", function() {
     expect(biggestProduct([])).toEqual(0);
   });
-
-  //write a unit test for the other edge case
 });
 
+// Iteration 1.2
 describe("product of 4 numbers", function() {
-  //write unit tests here
+  it("throw an error if the parameters are not of the type 'number'", function() {
+    expect(function(){productOf4Numbers([], '', 4, 5)}).toThrow(new Error ('The numbers are invalid'));
+  });
 
+  it("return the product of 4 numbers", function() {
+    expect(productOf4Numbers(4,2,8,6)).toEqual(384);
+  });
 });
 
-// write other tests here
+// Iteration 1.3
+describe("biggest product of 4 in a row", function() {
+  it("throw an error if the parameters are not of the type 'number'", function() {
+    expect(function(){biggestOf4NumbersInARow([[], '', 4, 5])}).toThrow(new Error ("The array doesn't contain only numbers"));
+  });
+
+  it("return the biggest product of 4 numbers in a row", function() {
+    expect(biggestOf4NumbersInARow([4, 2, 8, 6, 1])).toEqual(384);
+    expect(biggestOf4NumbersInARow(smallMatrix[2])).toEqual(1200);
+  });
+});
+
+// Iteration 2.1
+describe("biggest product of 4 in all rows", function() {
+  it("throw an error if the parameters are not of the type 'number'", function() {
+    expect(function(){biggestOf4NumbersInAllRows([[7, '', 4, 5], [5, 6, 8, 4]])}).toThrow(new Error ("The matrix doesn't contain only numbers"));
+  });
+
+  it("return the biggest product of 4 numbers in all rows", function() {
+    expect(biggestOf4NumbersInAllRows([[4, 2, 8, 6, 1], [1, 1, 1, 1, 1]])).toEqual(384);
+    expect(biggestOf4NumbersInAllRows(smallMatrix)).toEqual(1200);
+  });
+});
+
+// Iteration 2.2
+describe("biggest product of 4 in a column", function() {
+  it("throw an error if the parameters are not of the type 'number'", function() {
+    expect(function(){biggestOf4NumbersInAColumn([[4], [''], [8], [5], [1]])}).toThrow(new Error ("The matrix doesn't contain only numbers"));
+  });
+
+  it("return the biggest product of 4 numbers in a column", function() {
+    expect(biggestOf4NumbersInAColumn([[4], [2], [8], [6], [1]])).toEqual(384);
+  });
+});
+
+// Iteration 2.3
+describe("biggest product of 4 in all columns", function() {
+  it("throw an error if the parameters are not of the type 'number'", function() {
+    expect(function(){biggestOf4NumbersInAllColumns([[7, '', 4, 5], [21, 8, 9, 0], [7, 4, 6, 10], [5, 6, 8, 4]])}).toThrow(new Error ("The matrix doesn't contain only numbers"));
+  });
+
+  it("return the biggest product of 4 numbers in all columns", function() {
+    expect(biggestOf4NumbersInAllColumns(smallMatrix)).toEqual(32000);
+  });
+});
+
+// Iteration 2.3
+describe("biggest product of 4 in all columns", function() {
+  it("throw an error if the parameters are not of the type 'number'", function() {
+    expect(function(){biggestOf4NumbersInAllColumns([[7, '', 4, 5], [21, 8, 9, 0], [7, 4, 6, 10], [5, 6, 8, 4]])}).toThrow(new Error ("The matrix doesn't contain only numbers"));
+  });
+
+  it("return the biggest product of 4 numbers in all columns", function() {
+    expect(biggestOf4NumbersInAllColumns(smallMatrix)).toEqual(32000);
+  });
+});
