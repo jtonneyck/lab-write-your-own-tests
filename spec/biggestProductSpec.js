@@ -110,3 +110,23 @@ describe("biggest product of 4 in all columns", function() {
     expect(biggestOf4NumbersInAllColumns(smallMatrix)).toEqual(32000);
   });
 });
+
+// Bonus 7
+describe("return the biggest diagonal from right to left", function() {
+  it("return the biggest diagonal from right to left", function() {
+    expect(biggestDiagonalRightToLeft(smallMatrix)).toEqual(1200);
+  });
+});
+
+// Bonus 8
+describe("return the biggest diagonal", function() {
+  it("return the biggest product of 4 numbers in both diagonals", function() {
+    expect(biggestOf4NumbersInAllDiagonals(smallMatrix)).toEqual(1200);
+  });
+});
+
+describe("return the biggest product of 4 in the matrix", function() {
+  it("return the biggest product of 4 numbers", function() {
+    expect(biggestOf4Numbers(smallMatrix)).toEqual(32000);
+  });
+});

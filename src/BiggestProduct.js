@@ -71,3 +71,40 @@ function biggestOf4NumbersInAllColumns(matrix){
     const newMatrix = transpose(matrix);
     return biggestOf4NumbersInAllRows(newMatrix);
 }
+
+function biggestDiagonalRightToLeft(matrix) {
+    let biggestProduct = 0;
+    for (let i=0; i<matrix.length-3; i++){
+      for (let j=0; j<matrix[i].length-3; j++){
+        // left to right
+        if (matrix[i][j]*matrix[i+1][j+1]*matrix[i+2][j+2]*matrix[i+3][j+3] > biggestProduct){
+            biggestProduct = matrix[i][j]*matrix[i+1][j+1]*matrix[i+2][j+2]*matrix[i+3][j+3];
+        }
+      }
+    }
+    return biggestProduct;
+}
+
+
+function biggestOf4NumbersInAllDiagonals(matrix){
+    let biggestProduct = biggestDiagonalRightToLeft(matrix);
+    let newMatrix = transpose(matrix);
+    if (biggestDiagonalRightToLeft(newMatrix) > biggestProduct){
+        biggestProduct = biggestDiagonalRightToLeft(newMatrix)
+    }
+    return biggestProduct;
+}
+
+function biggestOf4Numbers(matrix){
+    let biggestProductRows = biggestOf4NumbersInAllRows(matrix);
+    let biggestProductColumn = biggestOf4NumbersInAllColumns(matrix);
+    let biggestProductDiagonal = biggestOf4NumbersInAllDiagonals(matrix);
+    let biggestProduct = biggestProductRows;
+    if (biggestProductRows < biggestProductColumn){
+        biggestProduct = biggestProductColumn;
+    }
+    if (biggestProductColumn < biggestProductDiagonal){
+        biggestProduct = biggestProductDiagonal;
+    }
+    return biggestProduct;
+}
