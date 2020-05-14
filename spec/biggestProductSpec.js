@@ -72,9 +72,16 @@ describe("biggest product of 4 in all rows", function() {
 });
 
 // Iteration 2.2
+describe("transpose", function() {
+  it("change the rows and columns", function() {
+    expect(transpose(smallMatrix)).toEqual([[1, 1, 1, 1, 1],[2, 20, 20, 20, 4],[3, 3, 3, 3, 3],[4, 4, 4, 4, 4],[5, 5, 5, 5, 5]]);
+  });
+})
+
+
 describe("biggest product of 4 in a column", function() {
   it("throw an error if the parameters are not of the type 'number'", function() {
-    expect(function(){biggestOf4NumbersInAColumn([[4], [''], [8], [5], [1]])}).toThrow(new Error ("The matrix doesn't contain only numbers"));
+    expect(function(){biggestOf4NumbersInAColumn([[4], [''], [8], [5], [1]])}).toThrow(new Error ("The array doesn't contain only numbers"));
   });
 
   it("return the biggest product of 4 numbers in a column", function() {

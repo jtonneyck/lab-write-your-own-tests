@@ -48,35 +48,26 @@ function biggestOf4NumbersInAllRows(matrix){
 }
 
 // Iteration 2.2
-function biggestOf4NumbersInAColumn(matrix){
-    const isANumber = (value) => typeof value === 'number';
-    let biggestProduct = 0;
-    for (let i=0; i<matrix.length-3; i++) {
-        if (matrix[i].every(isANumber) && matrix[i+1].every(isANumber) && matrix[i+2].every(isANumber) && matrix[i+3].every(isANumber)){
-            if (matrix[i][0]*matrix[i+1][0]*matrix[i+2][0]*matrix[i+3][0] > biggestProduct){
-                biggestProduct = matrix[i][0]*matrix[i+1][0]*matrix[i+2][0]*matrix[i+3][0];
+function transpose(matrix){
+    let newMatrix = [];    
+    for(let i=0; i<matrix.length; i++) {
+        for (let j=0; j<matrix[i].length; j++){
+            if (i === 0) {
+                newMatrix.push([]);
             }
-        } else {
-            throw new Error ("The matrix doesn't contain only numbers");
+            newMatrix[j].push(matrix[i][j]);
         }
     }
-    return biggestProduct;
+    return newMatrix;
+}
+
+function biggestOf4NumbersInAColumn(matrix){
+    const newMatrix = transpose(matrix);
+    return biggestOf4NumbersInARow(newMatrix[0]);
 }
 
 // Iteration 2.3
 function biggestOf4NumbersInAllColumns(matrix){
-    let biggestProduct = 0;
-    for (let i=0; i<matrix.length-3; i++) {
-        const isANumber = (value) => typeof value === 'number';
-        if (matrix[i].every(isANumber) && matrix[i+1].every(isANumber) && matrix[i+2].every(isANumber) && matrix[i+3].every(isANumber)){
-            for (let j=0; j<matrix.length; j++) {
-                if (matrix[i][j]*matrix[i+1][j]*matrix[i+2][j]*matrix[i+3][j] > biggestProduct){
-                    biggestProduct = matrix[i][j]*matrix[i+1][j]*matrix[i+2][j]*matrix[i+3][j];
-                }
-            }
-        } else {
-            throw new Error ("The matrix doesn't contain only numbers");
-        }
-    }
-    return biggestProduct;
+    const newMatrix = transpose(matrix);
+    return biggestOf4NumbersInAllRows(newMatrix);
 }
