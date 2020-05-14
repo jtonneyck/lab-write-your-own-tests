@@ -27,12 +27,96 @@ describe("biggest product", function() {
     expect(biggestProduct([])).toEqual(0);
   });
 
-  //write a unit test for the other edge case
+  it('return undefined on an input thats not an array', () => {
+    expect(biggestProduct("array")).toEqual(undefined);
+  });
+
+  it('return biggest product for a given array', () => {
+    expect(biggestProduct(matrix)).toEqual(51267216);
+  });
+
 });
 
 describe("product of 4 numbers", function() {
-  //write unit tests here
+  
+  it('return product of 4 numbers that are passed to a function', () => {
+    expect(biggestProduct4Numbers(1,2,3,4)).toEqual(24);
+  });
 
 });
 
-// write other tests here
+describe('Biggest product for a given row', () => {
+  it('return biggest product for a given row', () => {
+    expect(biggestProductRowOrColumn([1,1,1,1,2,2,2,2])).toEqual(16);
+    expect(biggestProductRowOrColumn([1,1,1,1,1,1])).toEqual(1);
+    expect(biggestProductRowOrColumn([1,2,3,4,5])).toEqual(120);
+  });
+});
+
+describe('Biggest product for given rows', () => {
+
+  const testArray = 
+  [
+    [1,2,3,4,5],
+    [1,2,3,4,5],
+    [1,1,1,1,2],
+    [1,2,3,4,5],
+    [10,20,30,40,0]
+  ]
+  it('return biggest product from all the rows that are passed to a function', ()=>{
+    expect(biggestProductRows(testArray)).toEqual(240000);
+  })
+});
+
+describe('Biggest product for a given column', () => {
+
+  const mat = [
+    [1, 2, 3, 4, 5], 
+    [1, 20, 3, 4, 5],
+    [1, 20, 3, 4, 5],
+    [1, 20, 3, 4, 5],
+    [1, 4, 3, 4, 5],
+  ];
+    it('return biggest product for a given column', ()=>{
+      expect(biggestProductRowOrColumn([1,1,1,1,1])).toEqual(1);
+      expect(biggestProductRowOrColumn([2,20,20,20,4])).toEqual(32000);
+    })
+});
+
+describe('Convert a column into a row', ()=>{
+
+  const mat = [
+    [1, 2, 3, 4, 5], 
+    [1, 20, 3, 4, 5],
+    [1, 20, 3, 4, 5],
+    [1, 20, 3, 4, 5],
+    [1, 4, 3, 4, 5],
+  ];
+
+  const newColumnArray = [
+    [1,1,1,1,1],
+    [2,20,20,20,4],
+    [3,3,3,3,3],
+    [4,4,4,4,4],
+    [5,5,5,5,5]
+  ]
+
+   it('returns a new array where rows are columns', () => {
+     expect(convertColumnsToRows(mat)).toEqual(newColumnArray);
+   });
+});
+
+describe('Biggest product for number of columns', () => {
+  const mat = [
+    [1, 2, 3, 4, 5], 
+    [1, 20, 3, 4, 5],
+    [1, 20, 3, 4, 5],
+    [1, 20, 3, 4, 5],
+    [1, 4, 3, 4, 5],
+  ];
+
+  it('returns a biggest product of all columns', () => {
+      expect(biggestProductColumns(mat)).toEqual(32000);
+  });
+});
+
