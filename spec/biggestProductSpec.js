@@ -22,17 +22,55 @@ const matrix = [
 ];
 
 describe("biggest product", function() {
-
   it("return 0 on empty input", function() {
-    expect(biggestProduct([])).toEqual(0);
+    expect(biggestProductOnOneRow([])).toEqual(0);
   });
 
-  //write a unit test for the other edge case
+  it("return a number", () => {
+    expect(typeof biggestProductOnOneRow([1, 2, 3, 4])).toEqual('number');
+  })
+
+  it("return the total product of 4 adjacent numbers that are passed", function () {
+    expect(biggestProductOnOneRow([1, 2, 3, 4, 5])).toEqual(120);
+  });
 });
 
 describe("product of 4 numbers", function() {
-  //write unit tests here
+    it("return the biggest product of 4 adjacent numbers in one row", function () {
+      let array1 = [1, 2, 3, 4, 5];
+      let array2 = [8, 4, 5, 6, 9, 9, 9];
+      expect(biggestProductOnOneRow(array1)).toEqual(120);
+      expect(biggestProductOnOneRow(array2)).toEqual(4374);
+    });
 
+    const smallMatrix = [
+      [1, 2, 3, 4, 5],
+      [1, 20, 3, 4, 5],
+      [1, 20, 3, 4, 5],
+      [1, 20, 3, 4, 5],
+      [1, 4, 3, 4, 5]
+    ];
+
+    it("return the biggest product of 4 adjacent numbers in all rows", function () {
+      expect(biggestOnAllRows(smallMatrix)).toEqual(1200);
+    });
+
+    it("return the biggest product of 4 adjacent numbers in all columns", function () {
+      expect(biggestOnAllColumns(smallMatrix)).toEqual(32000);
+    });
+
+    it("return the biggest product of the top right 4 diagonally adjacent numbers", function () {
+      let array3 = [1, 20, 3, 4, 5];
+      expect(biggestOnLeftToRightToRow(smallMatrix)).toEqual(1200);
+    });
+
+    it("return the biggest product of the top right 4 diagonally adjacent numbers", function () {
+      let array3 = [1, 20, 3, 4, 5];
+      expect(biggestOnLeftToRightToRow(smallMatrix)).toEqual(1200);
+    });
+
+    it("return the biggest product on full matrix of 4 diagonally adjacent numbers", function () {
+      expect(biggestOnFullMatrix(smallMatrix)).toEqual(32000);
+    });
 });
 
-// write other tests here
