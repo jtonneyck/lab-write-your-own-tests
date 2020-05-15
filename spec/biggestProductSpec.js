@@ -30,13 +30,13 @@ describe("biggest product", function() {
     expect(typeof biggestProductOnOneRow([1, 2, 3, 4])).toEqual('number');
   })
 
-  it("return the total product of 4 numbers that are passed", function () {
-    expect(biggestProductOnOneRow([1, 2, 3, 4])).toEqual(24);
+  it("return the total product of 4 adjacent numbers that are passed", function () {
+    expect(biggestProductOnOneRow([1, 2, 3, 4, 5])).toEqual(120);
   });
 });
 
 describe("product of 4 numbers", function() {
-    it("return the biggest product of 4 numbers in one row", function () {
+    it("return the biggest product of 4 adjacent numbers in one row", function () {
       let array1 = [1, 2, 3, 4, 5];
       let array2 = [8, 4, 5, 6, 9, 9, 9];
       expect(biggestProductOnOneRow(array1)).toEqual(120);
@@ -51,12 +51,26 @@ describe("product of 4 numbers", function() {
       [1, 4, 3, 4, 5]
     ];
 
-    it("return the biggest product of 4 numbers in all rows", function () {
+    it("return the biggest product of 4 adjacent numbers in all rows", function () {
       expect(biggestOnAllRows(smallMatrix)).toEqual(1200);
     });
 
-    it("return the biggest product of 4 numbers in all columns", function () {
-      expect(biggestOnAllColums(smallMatrix)).toEqual(32000);
+    it("return the biggest product of 4 adjacent numbers in all columns", function () {
+      expect(biggestOnAllColumns(smallMatrix)).toEqual(32000);
+    });
+
+    it("return the biggest product of the top right 4 diagonally adjacent numbers", function () {
+      let array3 = [1, 20, 3, 4, 5];
+      expect(biggestOnLeftToRightToRow(smallMatrix)).toEqual(1200);
+    });
+
+    it("return the biggest product of the top right 4 diagonally adjacent numbers", function () {
+      let array3 = [1, 20, 3, 4, 5];
+      expect(biggestOnLeftToRightToRow(smallMatrix)).toEqual(1200);
+    });
+
+    it("return the biggest product on full matrix of 4 diagonally adjacent numbers", function () {
+      expect(biggestOnFullMatrix(smallMatrix)).toEqual(32000);
     });
 });
 
