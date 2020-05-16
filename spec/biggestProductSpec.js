@@ -1,6 +1,6 @@
 const matrix = [
   [08, 02, 22, 97, 38, 15, 00, 40, 00, 75, 04, 05, 07, 78, 52, 12, 50, 77, 91, 08],
-  [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 04, 56, 62, 00],
+  [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 04, 56, 62, 02],
   [81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 03, 49, 13, 36, 65],
   [52, 70, 95, 23, 04, 60, 11, 42, 69, 24, 68, 56, 01, 32, 56, 71, 37, 02, 36, 91],
   [22, 31, 16, 71, 51, 67, 63, 89, 41, 92, 36, 54, 22, 40, 40, 28, 66, 33, 13, 80],
@@ -21,18 +21,58 @@ const matrix = [
   [01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48]
 ];
 
-describe("biggest product", function() {
+describe("The biggest product", function() {
 
-  it("return 0 on empty input", function() {
+  it("return 0 on an empty array", function() {
     expect(biggestProduct([])).toEqual(0);
   });
 
-  //write a unit test for the other edge case
 });
 
-describe("product of 4 numbers", function() {
-  //write unit tests here
+describe("The product of 4 numbers", function() {
+
+  it("return product of the 4 numbers passed", function() {
+    expect(productOf4Nums(1,3,6,7)).toEqual(126);
+    expect(productOf4Nums(2,9,5,3)).toEqual(270);
+  });
 
 });
 
-// write other tests here
+describe("The biggest product for 1 row", function() {
+
+  it("return the biggest product for 1 row", function() {
+    let anyRow = [ 4, 7, 5, 9, 3, 1, 6];
+    expect(biggestOfArr(anyRow)).toEqual(22680);
+  });
+
+});
+
+// Iteration 2
+describe("The biggest product within all rows", function() {
+
+  it("return the biggest product for all rows", function() {
+    let row1 = [ 4, 7, 5, 9, 3, 1, 6];
+    let row2 = [ 2, 6, 5, 9, 9, 1, 5];
+    expect(biggestOfAll(row1, row2)).toEqual(24300);
+  });
+
+});
+
+describe("The biggest product for 1 column", function() {
+
+  it("return the biggest product for 1 column", function() {
+    let col1 = matrix[0];
+    expect(biggestOfArr(arr)).toEqual(22680);
+  });
+
+});
+
+describe("The biggest product within all columns", function() {
+
+  it("return the biggest product for all columns", function() {
+    let row1 = [ 4, 7, 5, 9, 3, 1, 6];
+    let row2 = [ 2, 6, 5, 9, 9, 1, 5];
+    expect(biggestOfAll(row1, row2)).toEqual(24300);
+  });
+
+});
