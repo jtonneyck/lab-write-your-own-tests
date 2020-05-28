@@ -22,17 +22,54 @@ const matrix = [
 ];
 
 describe("biggest product", function() {
-
   it("return 0 on empty input", function() {
     expect(biggestProduct([])).toEqual(0);
   });
-
-  //write a unit test for the other edge case
 });
 
 describe("product of 4 numbers", function() {
-  //write unit tests here
-
+  it('should return product of 4 numbers passed to it', () => {
+    let arrayOne = [2, 3, 4, 5,]
+    let arrayTwo = [1, 2, 4, 1];
+    expect(fourNumberProduct(arrayOne)).toEqual(120);
+    expect(fourNumberProduct(arrayTwo)).toEqual(8);
+  });
 });
 
-// write other tests here
+describe('biggest product one row', () => {
+  it('should return the biggest product for one row', () => {
+    let arrayOne = [2, 3, 4, 5, 3]
+    let arrayTwo = [1, 2, 4, 1, 7];
+    let arrayThree = [1, 3, 4, 63, 4, 23, 44, 5, 65, 22, 30, 55, 6];
+    expect(biggestProductOneRow(arrayOne)).toEqual(180)
+    expect(biggestProductOneRow(arrayTwo)).toEqual(56)
+    expect(biggestProductOneRow(arrayThree)).toEqual(2359500)
+  });
+});
+describe('biggest product of all rows', () => {
+  it('should return the biggest product for all rows', () => {
+    let arrayOne =[[2, 3, 4, 5, 3] , [ 1, 2, 4, 1, 7] , [1, 3, 4, 63, 4, 23, 44, 5, 65, 22, 30, 55, 6]];
+    expect(biggestProductAllRows(arrayOne)).toEqual(2359500)
+    
+  });
+});
+
+describe('biggest product of a columns', () => {
+  it('should return the biggest product for a column', () => {
+    let arrayOne = 
+    [[3], [7] ,[7] ,[7] ,[9]];
+    expect(biggestProductColumn(arrayOne)).toEqual(3087)
+  });
+});
+
+describe('biggest product of all columns', () => {
+  it('should return the biggest product for all columns', () => {
+    let arrayOne = 
+    [[2, 3, 4, 5, 3], 
+    [ 1, 2, 4, 1, 7] ,
+    [ 1, 2, 4, 1, 7] ,
+    [ 1, 2, 4, 1, 7] , 
+    [ 1, 5, 6, 8, 9]];
+    expect(biggestProductAllColumns(arrayOne)).toEqual(3087)
+  });
+});
